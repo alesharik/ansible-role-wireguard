@@ -19,7 +19,7 @@
     - "setup-{{ ansible_os_family | lower }}.yml"
   tags:
     - wg-install
-  when: not wireguard_skip_install
+  when: wireguard_skip_install is not defined or not wireguard_skip_install
 
 - name: Enable WireGuard kernel module
   community.general.modprobe:
